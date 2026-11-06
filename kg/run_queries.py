@@ -27,7 +27,7 @@ TOLERANCE = 0.005 + 1e-9  # "equal to 2 dp"
 SHOW_ROWS = 3
 
 
-def parse_queries(path: Path) -> dict:
+def parse_queries(path: Path, count: int = 5) -> dict:
     raw = path.read_bytes()
     problems = []
     if raw.startswith(b"\xef\xbb\xbf"):
@@ -37,8 +37,8 @@ def parse_queries(path: Path) -> dict:
     text = raw.decode("utf-8")  # raises if not UTF-8
     headers = list(HEADER.finditer(text))
     numbers = [m.group(1) for m in headers]
-    if numbers != ["1", "2", "3", "4", "5"]:
-        problems.append("headers found {} (expected 1..5 in order)".format(numbers))
+    if numbers != [str(i) for i in range(1, count + 1)]:
+        problems.append("headers found {} (expected 1..{} in order)".format(numbers, count))
     queries = {}
     for i, m in enumerate(headers):
         end = headers[i + 1].start() if i + 1 < len(headers) else len(text)
@@ -57,13 +57,15 @@ def is_number(v) -> bool:
     return isinstance(v, (int, float)) and not isinstance(v, bool)
 
 
-def values_equal(got, want) -> bool:
+def values_equal(got, want, strict_types: bool = False) -> bool:
     if is_number(got) and is_number(want):
+        if strict_types and type(got) is not type(want):  # e.g. a float stored as an int
+            return False
         return abs(got - want) <= TOLERANCE
     return got == want  # strings, lists (exact), None
 
 
-def compare(columns, rows, expected) -> list:
+def compare(columns, rows, expected, strict_types: bool = False) -> list:
     """Return a list of difference messages (empty means PASS)."""
     diffs = []
     want_cols = list(expected[0].keys()) if expected else None
@@ -73,7 +75,7 @@ def compare(columns, rows, expected) -> list:
     if len(rows) != len(expected):
         diffs.append("row count {} != expected {}".format(len(rows), len(expected)))
     for i, (got, want) in enumerate(zip(rows, expected)):
-        bad = [c for c in want if not values_equal(got.get(c), want[c])]
+        bad = [c for c in want if not values_equal(got.get(c), want[c], strict_types)]
         if bad:
             diffs.append("row {}: got {} | expected {} (columns {})".format(i + 1, got, want, bad))
             if len(diffs) >= SHOW_ROWS:
@@ -86,9 +88,11 @@ def main(argv=None) -> int:
     ap.add_argument("--queries", type=Path, default=KG_DIR / "queries.txt")
     ap.add_argument("--expected", type=Path, default=KG_DIR / "crosscheck_expected.json")
     ap.add_argument("--config", type=Path, default=KG_DIR / "config.txt")
+    ap.add_argument("--count", type=int, default=5, help="number of queries expected in the file")
+    ap.add_argument("--strict-types", action="store_true", help="also require int vs float to match the expected JSON")
     args = ap.parse_args(argv)
 
-    queries = parse_queries(args.queries)
+    queries = parse_queries(args.queries, args.count)
     expected = json.loads(args.expected.read_text(encoding="utf-8"))
     config = load_config(args.config)
     session_kwargs = {"database": config["DATABASE"]} if config.get("DATABASE") else {}
@@ -105,7 +109,7 @@ def main(argv=None) -> int:
                     failures += 1
                     print("Q{} FAIL  error: {}".format(n, exc))
                     continue
-                diffs = compare(columns, rows, expected[n])
+                diffs = compare(columns, rows, expected[n], args.strict_types)
                 if diffs:
                     failures += 1
                     print("Q{} FAIL  ({} rows, columns {})".format(n, len(rows), columns))
@@ -113,7 +117,7 @@ def main(argv=None) -> int:
                         print("    " + d)
                 else:
                     print("Q{} PASS  ({} rows, columns {})".format(n, len(rows), columns))
-    print("RESULT: {}".format("ALL 5 PASS" if failures == 0 else "{} FAILED".format(failures)))
+    print("RESULT: {}".format("ALL {} PASS".format(len(queries)) if failures == 0 else "{} FAILED".format(failures)))
     return 0 if failures == 0 else 1
 
 

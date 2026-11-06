@@ -1,0 +1,50 @@
+//1. Query 1
+MATCH (p:PitStop)-[:FOR_RACE]->(r:Race)-[:IN_SEASON]->(s:Season {year: 2023})
+MATCH (p)-[:BY_DRIVER]->(d:Driver)
+WITH s.year AS Season, r, d, count(p) AS stops
+RETURN Season, count(*) AS Driver_Races, sum(stops) AS Pit_Stops, toFloat(sum(stops)) / count(*) AS Avg_Stops
+
+//2. Query 2
+MATCH (q:Qualifying {position: 1})-[:FOR_RACE]->(r:Race)-[:IN_SEASON]->(s:Season)
+WHERE s.year >= 2010 AND s.year <= 2024
+MATCH (q)-[:BY_DRIVER]->(d:Driver)
+OPTIONAL MATCH (d)<-[:BY_DRIVER]-(w:Result {position: 1})-[:FOR_RACE]->(r)
+WITH s.year AS Season, count(DISTINCT q) AS Poles, count(DISTINCT w) AS Pole_Wins
+RETURN Season, Poles, Pole_Wins, toFloat(Pole_Wins) / Poles AS Conversion
+ORDER BY Season ASC
+
+//3. Query 3
+MATCH (r:Race)-[:AT_CIRCUIT]->(c:Circuit)
+RETURN c.circuit_country AS Country, count(r) AS Races
+ORDER BY Races DESC, Country ASC
+LIMIT 10
+
+//4. Query 4
+MATCH (res:Result {position: 1})-[:FOR_RACE]->(r:Race)
+MATCH (res)-[:BY_DRIVER]->(d:Driver)
+WITH d, r, duration.inDays(d.dob, r.date).days AS days
+ORDER BY days ASC
+WITH d, collect({race: r, days: days})[0] AS first
+RETURN d.forename + ' ' + d.surname AS Driver, first.race.name AS Race, first.race.year AS Season,
+       first.days AS Age_Days, duration.between(d.dob, first.race.date).years AS Age_Years
+ORDER BY Age_Days ASC, Driver ASC
+LIMIT 10
+
+//5. Query 5
+MATCH (res:Result)-[:FOR_RACE]->(r:Race)
+WHERE r.year >= 1950 AND r.year <= 1979
+MATCH (res)-[:HAS_STATUS]->(s:Status)
+WHERE NOT (s.status = 'Finished' OR s.status STARTS WITH '+')
+RETURN s.status AS Status, count(res) AS Entries
+ORDER BY Entries DESC, Status ASC
+LIMIT 10
+
+//6. Query 6
+MATCH (q:Qualifying)-[:FOR_RACE]->(r:Race {year: 2019})
+RETURN count(q) AS Qualifying_Entries, count(q.q3) AS With_Q3
+
+//7. Query 7
+MATCH (res:Result)-[:FOR_RACE]->(r:Race)-[:AT_CIRCUIT]->(:Circuit {circuitRef: 'monza'})
+WHERE r.year >= 2004 AND r.year <= 2024 AND res.fastestLapSpeed IS NOT NULL
+RETURN r.year AS Season, max(res.fastestLapSpeed) AS Top_Speed
+ORDER BY Season ASC

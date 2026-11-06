@@ -74,7 +74,7 @@ def main() -> None:
         return o.item() if hasattr(o, "item") else o
 
     path = Path(__file__).resolve().parent / "crosscheck_expected.json"
-    path.write_text(json.dumps(out, indent=1, default=conv), encoding="utf-8")
+    path.write_text(json.dumps(out, indent=1, default=conv), encoding="utf-8", newline="\n")
     for k, v in out.items():
         print(f"Q{k}: {len(v)} rows; first: {v[:3]}")
 

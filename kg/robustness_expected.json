@@ -1,0 +1,350 @@
+{
+ "1": [
+  {
+   "Season": 2023,
+   "Driver_Races": 417,
+   "Pit_Stops": 912,
+   "Avg_Stops": 2.1870503597122304
+  }
+ ],
+ "2": [
+  {
+   "Season": 2010,
+   "Poles": 19,
+   "Pole_Wins": 8,
+   "Conversion": 0.4210526316
+  },
+  {
+   "Season": 2011,
+   "Poles": 19,
+   "Pole_Wins": 9,
+   "Conversion": 0.4736842105
+  },
+  {
+   "Season": 2012,
+   "Poles": 20,
+   "Pole_Wins": 8,
+   "Conversion": 0.4
+  },
+  {
+   "Season": 2013,
+   "Poles": 19,
+   "Pole_Wins": 10,
+   "Conversion": 0.5263157895
+  },
+  {
+   "Season": 2014,
+   "Poles": 19,
+   "Pole_Wins": 9,
+   "Conversion": 0.4736842105
+  },
+  {
+   "Season": 2015,
+   "Poles": 19,
+   "Pole_Wins": 12,
+   "Conversion": 0.6315789474
+  },
+  {
+   "Season": 2016,
+   "Poles": 21,
+   "Pole_Wins": 13,
+   "Conversion": 0.619047619
+  },
+  {
+   "Season": 2017,
+   "Poles": 20,
+   "Pole_Wins": 11,
+   "Conversion": 0.55
+  },
+  {
+   "Season": 2018,
+   "Poles": 21,
+   "Pole_Wins": 10,
+   "Conversion": 0.4761904762
+  },
+  {
+   "Season": 2019,
+   "Poles": 21,
+   "Pole_Wins": 8,
+   "Conversion": 0.380952381
+  },
+  {
+   "Season": 2020,
+   "Poles": 17,
+   "Pole_Wins": 10,
+   "Conversion": 0.5882352941
+  },
+  {
+   "Season": 2021,
+   "Poles": 22,
+   "Pole_Wins": 12,
+   "Conversion": 0.5454545455
+  },
+  {
+   "Season": 2022,
+   "Poles": 22,
+   "Pole_Wins": 10,
+   "Conversion": 0.4545454545
+  },
+  {
+   "Season": 2023,
+   "Poles": 22,
+   "Pole_Wins": 15,
+   "Conversion": 0.6818181818
+  },
+  {
+   "Season": 2024,
+   "Poles": 24,
+   "Pole_Wins": 12,
+   "Conversion": 0.5
+  }
+ ],
+ "3": [
+  {
+   "Country": "Italy",
+   "Races": 107
+  },
+  {
+   "Country": "Germany",
+   "Races": 79
+  },
+  {
+   "Country": "UK",
+   "Races": 79
+  },
+  {
+   "Country": "USA",
+   "Races": 77
+  },
+  {
+   "Country": "Monaco",
+   "Races": 70
+  },
+  {
+   "Country": "Belgium",
+   "Races": 69
+  },
+  {
+   "Country": "France",
+   "Races": 63
+  },
+  {
+   "Country": "Spain",
+   "Races": 61
+  },
+  {
+   "Country": "Canada",
+   "Races": 53
+  },
+  {
+   "Country": "Brazil",
+   "Races": 51
+  }
+ ],
+ "4": [
+  {
+   "Driver": "Max Verstappen",
+   "Race": "Spanish Grand Prix",
+   "Season": 2016,
+   "Age_Days": 6802,
+   "Age_Years": 18
+  },
+  {
+   "Driver": "Sebastian Vettel",
+   "Race": "Italian Grand Prix",
+   "Season": 2008,
+   "Age_Days": 7744,
+   "Age_Years": 21
+  },
+  {
+   "Driver": "Charles Leclerc",
+   "Race": "Belgian Grand Prix",
+   "Season": 2019,
+   "Age_Days": 7990,
+   "Age_Years": 21
+  },
+  {
+   "Driver": "Fernando Alonso",
+   "Race": "Hungarian Grand Prix",
+   "Season": 2003,
+   "Age_Days": 8061,
+   "Age_Years": 22
+  },
+  {
+   "Driver": "Troy Ruttman",
+   "Race": "Indianapolis 500",
+   "Season": 1952,
+   "Age_Days": 8116,
+   "Age_Years": 22
+  },
+  {
+   "Driver": "Bruce McLaren",
+   "Race": "United States Grand Prix",
+   "Season": 1959,
+   "Age_Days": 8139,
+   "Age_Years": 22
+  },
+  {
+   "Driver": "Lewis Hamilton",
+   "Race": "Canadian Grand Prix",
+   "Season": 2007,
+   "Age_Days": 8189,
+   "Age_Years": 22
+  },
+  {
+   "Driver": "Oscar Piastri",
+   "Race": "Hungarian Grand Prix",
+   "Season": 2024,
+   "Age_Days": 8507,
+   "Age_Years": 23
+  },
+  {
+   "Driver": "Kimi Räikkönen",
+   "Race": "Malaysian Grand Prix",
+   "Season": 2003,
+   "Age_Days": 8558,
+   "Age_Years": 23
+  },
+  {
+   "Driver": "Robert Kubica",
+   "Race": "Canadian Grand Prix",
+   "Season": 2008,
+   "Age_Days": 8584,
+   "Age_Years": 23
+  }
+ ],
+ "5": [
+  {
+   "Status": "Engine",
+   "Entries": 823
+  },
+  {
+   "Status": "Accident",
+   "Entries": 580
+  },
+  {
+   "Status": "Did not qualify",
+   "Entries": 421
+  },
+  {
+   "Status": "Gearbox",
+   "Entries": 245
+  },
+  {
+   "Status": "Suspension",
+   "Entries": 206
+  },
+  {
+   "Status": "Withdrew",
+   "Entries": 186
+  },
+  {
+   "Status": "Transmission",
+   "Entries": 152
+  },
+  {
+   "Status": "Not classified",
+   "Entries": 115
+  },
+  {
+   "Status": "Ignition",
+   "Entries": 104
+  },
+  {
+   "Status": "Clutch",
+   "Entries": 99
+  }
+ ],
+ "6": [
+  {
+   "Qualifying_Entries": 418,
+   "With_Q3": 199
+  }
+ ],
+ "7": [
+  {
+   "Season": 2004,
+   "Top_Speed": 257.32
+  },
+  {
+   "Season": 2005,
+   "Top_Speed": 255.874
+  },
+  {
+   "Season": 2006,
+   "Top_Speed": 252.604
+  },
+  {
+   "Season": 2007,
+   "Top_Speed": 251.653
+  },
+  {
+   "Season": 2008,
+   "Top_Speed": 236.859
+  },
+  {
+   "Season": 2009,
+   "Top_Speed": 246.106
+  },
+  {
+   "Season": 2010,
+   "Top_Speed": 247.861
+  },
+  {
+   "Season": 2011,
+   "Top_Speed": 241.971
+  },
+  {
+   "Season": 2012,
+   "Top_Speed": 239.053
+  },
+  {
+   "Season": 2013,
+   "Top_Speed": 242.924
+  },
+  {
+   "Season": 2014,
+   "Top_Speed": 236.975
+  },
+  {
+   "Season": 2015,
+   "Top_Speed": 240.617
+  },
+  {
+   "Season": 2016,
+   "Top_Speed": 244.373
+  },
+  {
+   "Season": 2017,
+   "Top_Speed": 250.174
+  },
+  {
+   "Season": 2018,
+   "Top_Speed": 252.794
+  },
+  {
+   "Season": 2019,
+   "Top_Speed": 255.014
+  },
+  {
+   "Season": 2020,
+   "Top_Speed": 252.033
+  },
+  {
+   "Season": 2021,
+   "Top_Speed": 245.894
+  },
+  {
+   "Season": 2022,
+   "Top_Speed": 248.182
+  },
+  {
+   "Season": 2023,
+   "Top_Speed": 245.142
+  },
+  {
+   "Season": 2024,
+   "Top_Speed": 256.1
+  }
+ ]
+}

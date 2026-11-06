@@ -1,3 +1,4 @@
 kg/queries.txt text eol=lf
 kg/*.json text eol=lf
 kg/*.py text eol=lf
+kg/robustness_queries.txt text eol=lf

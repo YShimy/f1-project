@@ -14,6 +14,15 @@ and design decisions are in [`docs/milestone2_plan.md`](../docs/milestone2_plan.
 4. Build the graph: `python kg/Create_kg.py --data-dir data/raw`
    (the graded run puts the CSVs next to the script and needs no arguments).
 
+## Tests
+
+Casting, config parsing and schema checks (no database needed):
+
+```bash
+pip install -r kg/requirements-dev.txt
+python -m pytest kg/tests -q
+```
+
 ## Local Neo4j
 
 Pinned image tag: **`neo4j:2026.10.1-community`** (Docker, container `f1kg`, named volume `f1kg-data`).

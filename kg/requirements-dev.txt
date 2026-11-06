@@ -1,0 +1,3 @@
+# Dev/test only; the graded script needs just requirements.txt
+-r requirements.txt
+pytest==9.2.0

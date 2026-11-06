@@ -1,0 +1,3 @@
+kg/queries.txt text eol=lf
+kg/*.json text eol=lf
+kg/*.py text eol=lf

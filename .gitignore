@@ -5,3 +5,4 @@ kg/config.txt
 kg/*.csv
 __pycache__/
 .pytest_cache/
+submission/

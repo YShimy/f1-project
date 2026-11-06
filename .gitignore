@@ -1,0 +1,5 @@
+# Milestone 2: local data and secrets
+data/
+.venv/
+kg/config.txt
+kg/*.csv
